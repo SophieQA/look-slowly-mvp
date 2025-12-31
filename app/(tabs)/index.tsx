@@ -4,6 +4,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 
 import ArtworkInfoSheet from "@/components/ArtworkInfoSheet";
 import ArtworkViewer from "@/components/ArtworkViewer";
+import DownloadButton from "@/components/DownloadButton";
 import FavoriteHeartButton from "@/components/FavoriteHeartButton";
 import { getMockArtworks } from "@/src/services/artworks/mockArtworks";
 import {
@@ -106,6 +107,9 @@ export default function TabOneScreen() {
           onPress={toggleFavorite}
         />
       )}
+      {artwork && (
+        <DownloadButton uri={artwork.imageUrl} style={styles.downloadButton} />
+      )}
       <Pressable style={styles.button} onPress={changeArtwork}>
         <Text style={styles.buttonText}>Change Artwork</Text>
       </Pressable>
@@ -121,6 +125,11 @@ const styles = StyleSheet.create({
   favoriteButton: {
     position: "absolute",
     top: 40,
+    right: 20,
+  },
+  downloadButton: {
+    position: "absolute",
+    bottom: 40,
     right: 20,
   },
   button: {
